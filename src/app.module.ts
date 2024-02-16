@@ -5,11 +5,14 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { FeedModule } from './modules/Feed/feed.module';
 import { MailerModule } from './modules/Mailer/mailer.module';
+import { MongoModule } from './Data store/postgress/mongo.module';
+import { MysqlProvider } from './Data store/mysql/mysql.provider';
 
 @Module({
   imports: [
     FeedModule,
     MailerModule,
+    MysqlProvider,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,

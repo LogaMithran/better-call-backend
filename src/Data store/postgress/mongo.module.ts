@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-
 @Module({
-  imports: [],
+  imports: [
+  ],
   providers: []
 })
-export class PostgressModule {}
+
+export class MongoModule {}

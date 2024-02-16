@@ -7,7 +7,7 @@ export class FeedResolver{
   constructor(private readonly feedService: FeedService) {
   }
   @Query(returns => FeedResponse)
-  getFeed(@Args("feedInput") args: Feed): FeedResponse{
+  getFeed(@Args("feedInput") args: Feed): Promise<FeedResponse>{
     return this.feedService.getFeed();
   }
 
