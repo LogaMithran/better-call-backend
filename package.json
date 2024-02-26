@@ -30,6 +30,7 @@
     "@nestjs/sequelize": "^10.0.1",
     "@nestjs/typeorm": "^10.0.2",
     "@types/nodemailer": "^6.4.14",
+    "axios": "^1.6.7",
     "graphql": "^16.8.1",
     "mongoose": "^8.1.2",
     "mysql2": "^3.9.1",

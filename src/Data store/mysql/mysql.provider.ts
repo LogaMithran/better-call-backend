@@ -2,19 +2,21 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import Dialect from 'sequelize';
 import { FeedTable } from '../../Schema/feeds.schema';
+import { Posts } from '../../Schema/posts.schema';
 
 @Module({
   imports: [
     SequelizeModule.forRootAsync({
       imports: [],
       useFactory: () => ({
-        models: [FeedTable],
+        models: [FeedTable, Posts],
         name: 'portfolio',
-        host: 'localhost',
-        username: 'root',
-        password: 'Ksrmk.logamithran2001',
-        database: 'portfolio',
-        dialect: 'mysql'
+        host: 'stagedb-ar.caratlane.com',
+        username: 'nidhistageuser',
+        password: 'Re#dfg44565y7gfde45566fde4445',
+        database: 'nidhi_stage',
+        dialect: 'mysql',
+        port: 6606
       }),
     }),
   ],
