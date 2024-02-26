@@ -8,6 +8,7 @@ import { MailerModule } from './modules/Mailer/mailer.module';
 import { MongoModule } from './Data store/postgress/mongo.module';
 import { MysqlProvider } from './Data store/mysql/mysql.provider';
 import { InstaModule } from './modules/Instagram/insta.module';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { InstaModule } from './modules/Instagram/insta.module';
     MailerModule,
     MysqlProvider,
     InstaModule,
+    CronModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,

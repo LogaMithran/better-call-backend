@@ -3,13 +3,14 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import Dialect from 'sequelize';
 import { FeedTable } from '../../Schema/feeds.schema';
 import { Posts } from '../../Schema/posts.schema';
+import { OrderDetail } from '../../Schema/orders.schema';
 
 @Module({
   imports: [
     SequelizeModule.forRootAsync({
       imports: [],
       useFactory: () => ({
-        models: [FeedTable, Posts],
+        models: [FeedTable, Posts, OrderDetail],
         name: 'portfolio',
         host: 'stagedb-ar.caratlane.com',
         username: 'nidhistageuser',

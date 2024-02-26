@@ -22,11 +22,6 @@ export class InstaFilter {
 
 }
 
-// caption,ig_id,owner,username,permalink,timestamp
-//
-// "owner": {
-//   "id": "17841426342870040"
-// },
 
 @InputType()
 export class InstaStoryFilter {
@@ -70,4 +65,10 @@ export class InstaFeedResponse {
 
   @Field({ nullable: true })
   username: string;
+}
+
+@ObjectType()
+export class StoreResponse {
+  @Field({ nullable: true })
+  status: boolean;
 }

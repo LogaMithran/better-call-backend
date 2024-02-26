@@ -2,10 +2,10 @@ import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
 @Table({
   timestamps: false,
-  tableName: 'posts',
+  tableName: 'order_details',
 })
 
-export class Posts extends Model<Posts> {
+export class OrderDetail extends Model<OrderDetail> {
 
   @Column({
     type: DataType.BIGINT,
@@ -18,54 +18,36 @@ export class Posts extends Model<Posts> {
     type: DataType.STRING,
     allowNull: false,
   })
-  post_id: String;
+  order_id: String;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  media_url: String;
+  cx_id: String;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
   })
-  caption: String;
+  voucher_id: String;
 
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  like_count: String;
+  order_time: String;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.BOOLEAN,
     allowNull: false,
   })
-  timestamp: String;
+  rewards_redeem: Boolean;
 
   @Column({
-    type: DataType.TEXT,
+    type: DataType.INTEGER,
     allowNull: false,
   })
-  comments: String;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  media_type: String;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  comments_count: String
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  username: String
+  score: number;
 }
