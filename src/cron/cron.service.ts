@@ -6,12 +6,14 @@ import { BASE_URL, CAPTION, DUMMY_TOKEN } from '../lib/constants';
 import { InjectModel } from '@nestjs/sequelize';
 import { Posts } from '../Schema/posts.schema';
 import { OrderDetail } from '../Schema/orders.schema';
+import { MailerService } from 'src/modules/Mailer/mailer.service';
 
 @Injectable()
 export class TasksService {
   private readonly logger = new Logger(TasksService.name);
 
   constructor(
+    private readonly mailerService: MailerService,
     @InjectModel(Posts)
     private postsModel: typeof Posts,
     @InjectModel(OrderDetail)
@@ -60,6 +62,26 @@ export class TasksService {
       }).catch((e) => {
         console.log('Error in making call to Facebook', e);
       });
+      let all_orders = await this.orderDetail.findAll({
+        where: {
+          score: 1,
+          rewards_redeem: null 
+        }
+      });
+      all_orders.forEach(async (order)=>{
+        const argsData = { from: "tushargoel.s@caratlane.com",
+        to: "tushargoel.s@caratlane.com",
+        type: "rewards"}
+        let rewards_email = await this.mailerService.sendMail(argsData);
+        console.log(`rewards email response ${rewards_email}`);
+        await this.orderDetail.update({ score : 0, rewards_redeem: true}, {
+          returning: [],
+          where: {
+            voucher_id: order?.voucher_id
+          }
+        });
+        
+      })
       return isInserted;
     } catch (e) {
       console.log('Error in getting the posts', e);
