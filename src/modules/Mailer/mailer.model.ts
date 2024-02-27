@@ -7,7 +7,10 @@ export class MailerInput {
   from: string;
 
   @Field({ nullable: false })
-  body: string;
+  to: string;
+
+  @Field({ nullable: false })
+  type: string;
 }
 
 @ObjectType()
